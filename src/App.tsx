@@ -1,23 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import { Outlet } from "react-router";
+import Navigation from "./components/navigation/Navigation";
+import { ThemeProvider, Theme } from "./utils/ThemeProvider";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  //TODO: put base layer here
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Kocham Julkę</h1>
-    </>
+    <ThemeProvider defaultTheme={Theme.Dark}>
+      <Navigation></Navigation>
+      <main className="bg-zinc-950">
+        <Outlet />
+      </main>
+      <footer></footer>
+    </ThemeProvider>
   );
 }
 
